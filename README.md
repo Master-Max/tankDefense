@@ -3,22 +3,26 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+11/12
 
-* System dependencies
+Demo Is Working
 
-* Configuration
+Things To Add Tommorrow:
 
-* Database creation
+* Start Game Screen
+* Win Condition
+* Rounds
+* Lose Condition
+* Show Projectiles
+* User Input, High Score, Leaderboard
 
-* Database initialization
+Stretch Goals:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Better Graphics
+* Better Map(s)
+* Advanced Enemy Pathing
+* Better Turret Ranges, (Circles Not Squares)
+* Turret Types
+* Turret Upgrades
+* Difficulty Settings
