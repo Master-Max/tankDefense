@@ -1,0 +1,2 @@
+class Turret < ApplicationRecord
+end

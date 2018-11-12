@@ -1,0 +1,11 @@
+.blue-background{
+  background-color: blue;
+  text-align: center;
+}
+
+.white-background{
+  display: inline;
+  margin: 20px;
+  /* padding: 10px; */
+  background-color: white;
+}
