@@ -6,13 +6,43 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Test Defense</h1>
-    <h2>Health: <span id="score">0</span></h2>
-    <div id="canvas-div" class="blue-background">
-      <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
+    <div id="start">
+      <button id="start-btn" type="button" name="start">Start</button>
+      <hr>
     </div>
-    <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
-    <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
+
+    <div id="game" style="display: none;">
+      <h1>Test Defense</h1>
+      <h2>Health: <span id="score">0</span></h2>
+      <h2>Money: <span id="money">0</span></h2>
+      <div id="canvas-div" class="blue-background">
+        <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
+      </div>
+      <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+      <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
+      <button id="next-round-btn" type="button" name="next-round">Next Round</button>
+    </div>
+
+
+    <div id="end">
+      <hr>
+      <br>
+      <select id="end-select">
+        <option value="">Select your option</option>
+        <option value="new">New Player</option>
+        <option value="p1">Existing Player 1</option>
+        <option value="p2">Existing Player 2</option>
+        <option value="p3">Existing Player 3</option>
+        <option value="p4">Existing Player 4</option>
+        <option value="p5">Existing Player 5</option>
+      </select>
+      <br></br>
+      <form id="end-form" class="" action="index.html" method="post">
+        <span>Username: </span>
+        <input type="text" name="username" placeholder="">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </body>
   <script type="text/javascript" src='src/game.js'></script>
 </html>
