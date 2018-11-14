@@ -9,3 +9,15 @@
   /* padding: 10px; */
   background-color: white;
 }
+
+.row {
+    text-align: center;
+}
+.item {
+    display: inline-block;
+    margin-right: 6px;
+    background-color: #EEE;
+}
+.clear {
+    clear: both;
+}

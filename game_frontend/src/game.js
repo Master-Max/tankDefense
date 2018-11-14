@@ -1,128 +1,13 @@
-/**********************************************************
-* Vars and Constantants
-**********************************************************/
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-// ctx.fillStyle = "red";
-
-const width = canvas.width
-const height = canvas.height
-
-const scoreCounter = document.getElementById('score');
-let score = 100;
-
-const moneyCounter = document.getElementById('money');
-let money = 1000;
-
-const creepButton = document.getElementById('add-creep-btn');
-const turretButton = document.getElementById('add-turret-btn');
-let turretToAdd = false;
-const nextRoundButton = document.getElementById('next-round-btn');
-
-let background = new Image();
-// const bg1URL = 'https://imgur.com/BzYNfOl';
-background.src = 'https://imgur.com/BzYNfOl.png'; // Why no local load?
-
-console.dir(background)
-
-let prevX, prevY, currX, currY;
-/**********************************************************
-* Making Entities
-**********************************************************/
-const allEnemies = [];
-const allTurrets = [];
-const allShots = [];
-const allRounds = [];
-const allDeadEnemies = [];
-
-class Round {
-  constructor(){
-
-  }
-}
-
-
-
-function addEnemy(){
-  let creep = new Enemy(1, 0, width/2, 2);
-  allEnemies.push(creep);
-}
-
-class Enemy {
-  constructor(health, xPos, yPos, speed){
-    this.health = health;
-    this.xPos = xPos;
-    this.yPos = yPos;
-    this.speed = speed;
-    this.color = "red";
-  }
-}
-
-function addShot(turret, creep){
-  let shot = new Shot(turret.xPos, turret.yPos, creep.xPos, creep.yPos, "#ADD8E6", turret.fireRate / 2);
-  allShots.push(shot);
-}
-
-class Shot {
-  constructor(startX, startY, endX, endY, color, fadeRate){
-    this.startX = startX;
-    this.startY = startY;
-    this.endX = endX;
-    this.endY = endY;
-    this.color = color;
-    this.fadeRate = fadeRate;
-  }
-}
-
-
-function addTurret(x,y){
-  money -= 100;
-  let turret = new Turret(x, y, 700, 70);
-  allTurrets.push(turret)
-}
-
-class Turret {
-  constructor(xPos, yPos, fireRate, range){
-    this.xPos = xPos;
-    this.yPos = yPos;
-    this.fireRate = fireRate;
-    this.range = range;
-    this.primed = true;
-    this.reloading = false;
-    this.color = "green";
-  }
-
-  reload(){
-    console.log("Starting Reload");
-    this.reloading = true;
-    this.color = "red";
-    setTimeout(() => {
-      console.log("reloaded");
-      this.primed = true;
-      this.color = "green";
-      this.reloading = false;
-    }, this.fireRate);
-  }
-
-  fire(creep){
-    if (creep.xPos > (this.xPos - this.range) && creep.xPos < (this.xPos + this.range)){
-      if (creep.yPos > (this.yPos - this.range) && creep.yPos < (this.yPos + this.range)){
-        if (this.primed){
-          console.log("Bang");
-          creep.health -= 1;
-          creep.color = "blue";
-          addShot(this, creep);
-          this.primed = false;
-          if (!this.reloading){
-            this.reload();
-          }
-        } else {
-          console.log("Still Reloading");
-        }
-      }
-    }
-  }
+function startGame(){
+  round = 0;
+  console.log(`Rounds: ${round}`)
+  let r1 = new Round(10, 10, 1000);
+  let r2 = new Round(50, 5, 750);
+  let r3 = new Round(100, 1, 500);
+  console.log("Rounds Generated");
+  allRounds.length = 0;
+  allRounds.push(r1,r2,r3);
+  console.log(`Rounds Count: ${allRounds.length}`)
 }
 
 /**********************************************************
@@ -149,16 +34,24 @@ canvas.addEventListener('click', (event) => {
 })
 
 nextRoundButton.addEventListener('click', (event) => {
-
+  // debugger;
+  allRounds[round].genCreeps();
+  round += 1;
 })
 
+startButton.addEventListener('click', (event) => {
+  startGame();
+})
 
 /**********************************************************
 * Helpers
 **********************************************************/
 function findxy(e) {
+  // debugger;
   prevX = currX;
   prevY = currY;
+  console.log(`Finding XY:\nevent(x,y): (${e.clientX},${e.clientY})`);
+  console.log(`canvas(x,y): (${canvas.offsetLeft},${canvas.offsetTop})`);
   currX = e.clientX - canvas.offsetLeft;
   currY = e.clientY - canvas.offsetTop;
 }
@@ -177,12 +70,18 @@ function removeEnemy(creep){
 **********************************************************/
 function enemyUpdate(){
   allEnemies.forEach((creep) => {
-    creep.xPos += creep.speed
+    if (creep.health <= 0){
+      kills += 1;
+      // allDeadEnemies.push({creep: creep, show: 7});
+      removeEnemy(creep);
+    } else {
+      creep.xPos += creep.speed
 
-    if (creep.xPos > width) {
-      score -= 1;
-      const index = allEnemies.indexOf(creep);
-      allEnemies.splice(index, 1);
+      if (creep.xPos > width) {
+        score -= 1;
+        const index = allEnemies.indexOf(creep);
+        allEnemies.splice(index, 1);
+      }
     }
   });
 }
@@ -196,13 +95,15 @@ function turretUpdate(){
 }
 
 function update(progress){
-  enemyUpdate()
   turretUpdate()
+  enemyUpdate()
 }
 
 function draw() {
   scoreCounter.innerHTML = score;
   moneyCounter.innerHTML = money;
+  killsCounter.innerHTML = kills;
+  roundCounter.innerHTML = round;
 
   ctx.clearRect(0, 0, width, height) //Clear Whole canvas
 
@@ -254,6 +155,7 @@ function draw() {
     ctx.strokeStyle = turret.color;
     // ctx.fillStyle = "white";
     ctx.fillRect(turret.xPos - 10, turret.yPos - 10, 20, 20)
+    // console.log(`New Turret:\nx: ${turret.xPos}\ny: ${turret.yPos}`)
 
     ctx.strokeRect(turret.xPos - turret.range, turret.yPos - turret.range, (turret.range * 2), (turret.range * 2))
   })
