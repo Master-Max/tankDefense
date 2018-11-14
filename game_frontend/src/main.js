@@ -30,7 +30,10 @@ const nextRoundButton = document.getElementById('next-round-btn');
 const startButton = document.getElementById('start-btn');
 
 let background = new Image();
-background.src = 'https://imgur.com/BzYNfOl.png';
+const straightMap = 'https://imgur.com/BzYNfOl.png';
+const curvyMap = 'https://imgur.com/a/zR87Mfy';
+
+background.src = straightMap;
 
 const allRounds = [];
 const allTurrets = [];
