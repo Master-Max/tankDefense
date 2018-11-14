@@ -6,25 +6,37 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="start">
-      <button id="start-btn" type="button" name="start">Start</button>
-      <hr>
-    </div>
-
-    <div id="game" style="display: none;">
+    <div id="game" style="display: block;">
       <h1>Test Defense</h1>
-      <h2>Health: <span id="score">0</span></h2>
-      <h2>Money: <span id="money">0</span></h2>
+      <div class="container">
+        <div class="row">
+          <div class="item"><p>Health: <span id="score">0</span></p></div>
+          <div class="item"><p>Money: <span id="money">0</span></p></div>
+          <div class="item"><p>Kills: <span id="kills">0</span></p></div>
+          <div class="item"><p>Round: <span id="round">0</span></p></div>
+        </div>
+      </div>
       <div id="canvas-div" class="blue-background">
         <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
       </div>
-      <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
-      <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
-      <button id="next-round-btn" type="button" name="next-round">Next Round</button>
+      <div class="row">
+        <div id="controls" class="item">
+          <p>Controls</p>
+          <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
+          <button id="next-round-btn" type="button" name="next-round">Next Round</button>
+        </div>
+        <div id="dev-tools" class="item">
+          <p>Dev Tools</p>
+          <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+        </div>
+        <div class="item">
+          <button id="start-btn" type="button" name="start">Start</button>
+        </div>
+      </div>
     </div>
 
 
-    <div id="end">
+    <div id="end" style="display: none;">
       <hr>
       <br>
       <select id="end-select">
@@ -44,5 +56,7 @@
       </form>
     </div>
   </body>
+  <script type="text/javascript" src='src/main.js'></script>
+  <script type="text/javascript" src='src/models.js'></script>
   <script type="text/javascript" src='src/game.js'></script>
 </html>
