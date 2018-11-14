@@ -4,11 +4,11 @@ class Round {
     this.min = min;
     this.max = max;
     this.genCount = 0;
+    this.completed = false;
   }
 
   genWaitTime(){
     return Math.random() * (this.max - this.min) + this.min;
-    // return getRandomArbitrary(this.min, this.max);
   }
 
   genCreeps(){
@@ -19,6 +19,8 @@ class Round {
         addEnemy();
         this.genCreeps();
       }, t)
+    } else {
+      this.completed = true;
     }
   }
 }
@@ -85,10 +87,6 @@ class Turret {
     }
   }
 }
-
-// function getRandomArbitrary(min, max) {
-//   return Math.random() * (max - min) + min;
-// }
 
 function addEnemy(){
   let creep = new Enemy(1, 0, width/2, 2);

@@ -1,2 +1,0 @@
-class Turret < ApplicationRecord
-end

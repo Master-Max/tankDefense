@@ -35,12 +35,34 @@ canvas.addEventListener('click', (event) => {
 
 nextRoundButton.addEventListener('click', (event) => {
   // debugger;
-  allRounds[round].genCreeps();
-  round += 1;
+  console.log(`Starting Round ${round + 1}`);
+  console.log(allRounds[allRounds.lenght - 1]);
+  if (allRounds[round] === allRounds[allRounds.lenght - 1]){
+    lastRound = true;
+  }
+  if (!roundIsRunning){
+    roundIsRunning = true;
+    allRounds[round].genCreeps();
+    currentRound = round;
+    round += 1;
+  }
 })
 
 startButton.addEventListener('click', (event) => {
   startGame();
+})
+
+restartButton.addEventListener('click', () => {
+  health = 100;
+  money = 1000;
+  kills = 0;
+  round = 0;
+  currentRound = 0;
+  lastRound = false;
+  roundIsRunning = false;
+  turretToAdd = false;
+  finalGameScore = 0;
+  startTheGame();
 })
 
 /**********************************************************
@@ -78,7 +100,7 @@ function enemyUpdate(){
       creep.xPos += creep.speed
 
       if (creep.xPos > width) {
-        score -= 1;
+        health -= 1;
         const index = allEnemies.indexOf(creep);
         allEnemies.splice(index, 1);
       }
@@ -94,13 +116,32 @@ function turretUpdate(){
   })
 }
 
+function roundUpdate(){
+  if (allRounds[currentRound].completed){
+    roundIsRunning = false;
+    console.log(`Finished Round: ${round}`);
+    if (lastRound){
+      console.log("WAIT YOU WON?");
+      winTheGame();
+    }
+  }
+  if (health <= 0){
+    console.log("YOU LOST DUMBASS");
+    stopEverything();
+    loseTheGame();
+  }
+}
+
 function update(progress){
-  turretUpdate()
-  enemyUpdate()
+  if (roundIsRunning){
+    roundUpdate();
+  }
+  turretUpdate();
+  enemyUpdate();
 }
 
 function draw() {
-  scoreCounter.innerHTML = score;
+  healthCounter.innerHTML = health;
   moneyCounter.innerHTML = money;
   killsCounter.innerHTML = kills;
   roundCounter.innerHTML = round;
