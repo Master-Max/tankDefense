@@ -6,11 +6,18 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="game" style="display: block;">
-      <h1>Test Defense</h1>
+    <div id="test-page" style="display: block;">
+      <span id="test1"></span>
+    </div>
+
+    <div id="start-page" style="display: block;">
+      <button id="start-btn" type="button" name="start">Start</button>
+    </div>
+    <div id="game-page" style="display: block;">
+      <h1>Tank Defense</h1>
       <div class="container">
         <div class="row">
-          <div class="item"><p>Health: <span id="score">0</span></p></div>
+          <div class="item"><p>Health: <span id="health">0</span></p></div>
           <div class="item"><p>Money: <span id="money">0</span></p></div>
           <div class="item"><p>Kills: <span id="kills">0</span></p></div>
           <div class="item"><p>Round: <span id="round">0</span></p></div>
@@ -28,35 +35,39 @@
         <div id="dev-tools" class="item">
           <p>Dev Tools</p>
           <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+          <button id="pause-btn" type="button" name="pause">Pause</button>
         </div>
-        <div class="item">
+        <!-- <div class="item">
           <button id="start-btn" type="button" name="start">Start</button>
-        </div>
+        </div> -->
       </div>
     </div>
 
+    <div id="end-page" style="display: block;">
+      <div id="win-page" style="display: block;">
+        <h1>You Win</h1>
+        <h2>Score: <span id="final-score">0</span> </h2>
+        <form id="end-form" class="" action="index.html" method="post">
+          <select id="end-select">
+          </select>
+          <div id="username-input">
+            <span>Username: </span>
+            <input type="text" name="username" placeholder="">
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
 
-    <div id="end" style="display: none;">
-      <hr>
-      <br>
-      <select id="end-select">
-        <option value="">Select your option</option>
-        <option value="new">New Player</option>
-        <option value="p1">Existing Player 1</option>
-        <option value="p2">Existing Player 2</option>
-        <option value="p3">Existing Player 3</option>
-        <option value="p4">Existing Player 4</option>
-        <option value="p5">Existing Player 5</option>
-      </select>
-      <br></br>
-      <form id="end-form" class="" action="index.html" method="post">
-        <span>Username: </span>
-        <input type="text" name="username" placeholder="">
-        <input type="submit" value="Submit">
-      </form>
+      <div id="lose-page" style="display: block;">
+        <h1>You Lose</h1>
+      </div>
+      <button id="restart-btn" type="button" name="button">Play Again?</button>
     </div>
+
   </body>
   <script type="text/javascript" src='src/main.js'></script>
+  <script type="text/javascript" src='src/user.js'></script>
+  <script type="text/javascript" src='src/index.js'></script>
   <script type="text/javascript" src='src/models.js'></script>
   <script type="text/javascript" src='src/game.js'></script>
 </html>

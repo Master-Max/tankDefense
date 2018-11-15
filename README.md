@@ -3,6 +3,16 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+11/14 @ 5:42PM
+
+Almost MVP
+
+Major Bugs:
+
+* Can't really stop / pause game look into canvas stuff
+* Creeps not resetting after losing match
+* You'll know when not broken when consol stops yelling :D
+
 
 11/12
 
