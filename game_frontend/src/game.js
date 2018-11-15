@@ -97,7 +97,7 @@ restartButton.addEventListener('click', () => {
 * Helpers
 **********************************************************/
 function findxy(e) {
-  // debugger;
+  debugger;
   prevX = currX;
   prevY = currY;
   console.log(`Finding XY:\nevent(x,y): (${e.clientX},${e.clientY})`);
