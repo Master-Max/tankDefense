@@ -130,6 +130,7 @@ function startTheGame(){
   endPage.style.display = "none"
   winPage.style.display = "none"
   losePage.style.display = "none"
+  startGame();
 }
 
 function winTheGame(){

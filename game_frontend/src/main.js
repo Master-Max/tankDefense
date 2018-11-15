@@ -9,7 +9,8 @@ const width = canvas.width
 const height = canvas.height
 
 const healthCounter = document.getElementById('health');
-let health = 100;
+let health = 1;
+// let health = 10;
 
 const moneyCounter = document.getElementById('money');
 let money = 1000;
@@ -31,6 +32,9 @@ let turretToAdd = false;
 const nextRoundButton = document.getElementById('next-round-btn');
 
 const startButton = document.getElementById('start-btn');
+
+const pauseButton = document.getElementById('pause-btn');
+let running = false;
 
 let background = new Image();
 const straightMap = 'https://imgur.com/BzYNfOl.png';
