@@ -1,7 +1,6 @@
 const testPage = document.getElementById('test-page');
 const test1 = document.getElementById('test1');
 
-
 const startPage = document.getElementById('start-page');
 const gamePage = document.getElementById('game-page');
 const endPage = document.getElementById('end-page');
@@ -138,7 +137,6 @@ function winTheGame(){
   endPage.style.display = "block"
   winPage.style.display = "block"
   losePage.style.display = "none"
-
   endForm.style.display = "";
 
   fetchAllUsers();
@@ -151,6 +149,7 @@ function loseTheGame(){
   endPage.style.display = "block"
   winPage.style.display = "none"
   losePage.style.display = "block"
+  // debugger
 }
 
 function stopEverything(){

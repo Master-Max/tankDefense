@@ -47,7 +47,7 @@ nextRoundButton.addEventListener('click', (event) => {
   }
   if (!roundIsRunning){
     roundIsRunning = true;
-    debugger
+    // debugger
     allRounds[round].genCreeps();
     currentRound = round;
     round += 1;

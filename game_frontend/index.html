@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <meta charset="utf-8">
     <title>Testing The Canvas</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="test-page" style="display: block;">
-      <span id="test1"></span>
+    <div id="start-page" style="display: block;">
+      <h1 class='title'>Tank Defense</h1>
+      <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+      <button id="start-btn" type="button" name="start">Start Game</button>
     </div>
 
-    <div id="start-page" style="display: block;">
-      <button id="start-btn" type="button" name="start">Start</button>
-    </div>
     <div id="game-page" style="display: block;">
-      <h1>Tank Defense</h1>
+      <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+      <h1 class'title'>Tank Defense</h1>
       <div class="container">
         <div class="row">
           <div class="item"><p>Health: <span id="health">0</span></p></div>
@@ -23,6 +24,7 @@
           <div class="item"><p>Round: <span id="round">0</span></p></div>
         </div>
       </div>
+
       <div id="canvas-div" class="blue-background">
         <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
       </div>
@@ -32,21 +34,16 @@
           <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
           <button id="next-round-btn" type="button" name="next-round">Next Round</button>
         </div>
-        <div id="dev-tools" class="item">
-          <p>Dev Tools</p>
-          <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
-          <button id="pause-btn" type="button" name="pause">Pause</button>
-        </div>
-        <!-- <div class="item">
-          <button id="start-btn" type="button" name="start">Start</button>
-        </div> -->
-      </div>
     </div>
+  </div>
+
 
     <div id="end-page" style="display: block;">
+
       <div id="win-page" style="display: block;">
-        <h1>You Win</h1>
-        <h2>Score: <span id="final-score">0</span> </h2>
+        <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+        <h1 class='win'>You Win</h1>
+        <h2 class='score'>Score: <span id="final-score">0</span> </h2>
         <form id="end-form" class="" action="index.html" method="post">
           <select id="end-select">
           </select>
@@ -54,20 +51,27 @@
             <span>Username: </span>
             <input type="text" name="username" placeholder="">
           </div>
-          <input type="submit" value="Submit">
+            <input type="submit" value="Submit">
         </form>
       </div>
 
       <div id="lose-page" style="display: block;">
-        <h1>You Lose</h1>
-      </div>
-      <button id="restart-btn" type="button" name="button">Play Again?</button>
+        <h1 class='lost'>You Lose</h1>
+        <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+        <button id="restart-btn" type="button" name="button">Play Again?</button>
+    </div>
+  </div>
+
+    <div id="dev-tools" class="item">
+	     <p>Dev Tools</p>
+	      <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+	      <button id="pause-btn" type="button" name="pause">Pause</button>
     </div>
 
+      <script type="text/javascript" src='src/main.js'></script>
+      <script type="text/javascript" src='src/user.js'></script>
+      <script type="text/javascript" src='src/index.js'></script>
+      <script type="text/javascript" src='src/models.js'></script>
+      <script type="text/javascript" src='src/game.js'></script>
   </body>
-  <script type="text/javascript" src='src/main.js'></script>
-  <script type="text/javascript" src='src/user.js'></script>
-  <script type="text/javascript" src='src/index.js'></script>
-  <script type="text/javascript" src='src/models.js'></script>
-  <script type="text/javascript" src='src/game.js'></script>
 </html>

@@ -1,0 +1,19 @@
+current directory: /Users/Wendy/Development/tankDefense/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/Users/Wendy/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20181115-55345-1myuxyg.rb extconf.rb
+creating Makefile
+
+current directory: /Users/Wendy/Development/tankDefense/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/Wendy/Development/tankDefense/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling locker.c
+compiling byebug.c
+compiling context.c
+compiling breakpoint.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/Wendy/Development/tankDefense/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20181115-55345-1d6fsb3/byebug
