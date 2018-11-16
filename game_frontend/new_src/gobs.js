@@ -2,7 +2,6 @@
 * Draw Array
 *****************************************/
 const renderQueue = [];
-let currentRound;
 function removeFromRenderQueue(obj){
   const index = renderQueue.indexOf(obj);
   renderQueue.splice(index, 1);
@@ -36,3 +35,7 @@ const roundDisplay = document.getElementById('round');
 const remainingDisplay = document.getElementById('remaining');
 let remainingCreeps;
 let player;
+
+
+// Round Tracker
+let currentRound;

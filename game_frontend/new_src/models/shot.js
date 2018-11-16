@@ -9,6 +9,8 @@ class Shot {
 
     this.color = "#ADD8E6";
     this.timeTillFade = 140;
+
+    Shot.all.push(this);
   }
 
   update(delta){
@@ -29,3 +31,5 @@ class Shot {
     ctx.stroke();
   }
 }
+
+Shot.all = [];

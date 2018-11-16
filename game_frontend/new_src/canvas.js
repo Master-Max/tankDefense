@@ -60,7 +60,6 @@ function update(delta) {
 }
 
 function draw(interp) {
-  // let drawnX = (creep.lastX + (creep.x - creep.lastX) * interp);
   fpsDisplay.textContent = Math.round(fps) + ' FPS'; // display the FPS
   player.draw();
   ctx.clearRect(0, 0, width, height);
@@ -73,10 +72,6 @@ function draw(interp) {
   towerQueue.forEach((obj) => {
     obj.draw(ctx, interp)
   })
-
-
-  // ctx.fillStyle = creep.color;
-  // ctx.fillRect(drawnX - 5, creep.y - 5, 10, 10)
 }
 
 function animate(timestamp) {

@@ -9,6 +9,8 @@ class Round{
     this.lastRender;
     this.creeps = [];
     this.genCreeps();
+
+    Round.all.push(this);
   }
 
   genCreeps(){
@@ -51,3 +53,5 @@ class Round{
 
   }
 }
+
+Round.all = [];
