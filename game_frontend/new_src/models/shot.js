@@ -23,9 +23,10 @@ class Shot {
   }
 
   draw(ctx, interp){ // Not Generalized Yet
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "black";
     ctx.fillRect(this.x2 - 10, this.y2 - 5, 20, 10)
     ctx.strokeStyle = this.color;
+    ctx.lineWidth=3;
     ctx.beginPath();
     ctx.moveTo(this.x1,this.y1);
     ctx.lineTo(this.x2,this.y2);

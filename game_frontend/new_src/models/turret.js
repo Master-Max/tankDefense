@@ -97,6 +97,7 @@ class Turret {
     ctx.restore();
     // ctx.drawImage(this.sprite, this.x-(this.sprite.height/2), this.y-(this.sprite.width/2))
     ctx.strokeStyle = this.color;
+    ctx.lineWidth=1;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.range, 0, 2*Math.PI);
     ctx.stroke();
