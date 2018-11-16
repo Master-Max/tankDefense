@@ -9,6 +9,8 @@ class Player {
     this.roundsSurvived = 0;
     this.kills = 0;
     this.currentRound = 0;
+
+    this.roundsToPlay = [];
   }
 
   hitFace(power){

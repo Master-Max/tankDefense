@@ -1599,3 +1599,383 @@ No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, crea
 Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 10:56:19 -0500
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mx/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.65ms)
+Completed 200 OK in 42ms (Views: 23.7ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 11:03:29 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.57ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 11:07:42 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.06ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 11:12:32 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.99ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/games" for 127.0.0.1 at 2018-11-16 11:12:41 -0500
+Processing by Api::V1::GamesController#create as */*
+  Parameters: {"user_id"=>"5", "score"=>30, "game"=>{"score"=>30, "user_id"=>"5"}}
+Unpermitted parameter: :game
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mGame Create (8.8ms)[0m  [1m[32mINSERT INTO "games" ("score", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["score", 30], ["created_at", "2018-11-16 16:12:41.706536"], ["updated_at", "2018-11-16 16:12:41.706536"], ["user_id", 5]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:11
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/models/user.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:7
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "highscore" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["highscore", 30], ["updated_at", "2018-11-16 16:12:41.728807"], ["id", 5]]
+  ↳ app/models/user.rb:7
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Game (0.63ms)
+Completed 201 Created in 65ms (Views: 8.2ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 11:36:39 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (3.38ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 12:28:42 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (6.36ms)
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:02:07 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (5.31ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:02:30 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (3.6ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:02:48 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.99ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:05:15 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (10.84ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:05:41 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (3.38ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:06:49 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.01ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:09:41 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.81ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:23:58 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.5ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:27:34 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.84ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:28:56 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.0ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/games" for 127.0.0.1 at 2018-11-16 14:29:04 -0500
+Processing by Api::V1::GamesController#create as */*
+  Parameters: {"user_id"=>"2", "score"=>180, "game"=>{"score"=>180, "user_id"=>"2"}}
+Unpermitted parameter: :game
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("score", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["score", 180], ["created_at", "2018-11-16 19:29:04.150896"], ["updated_at", "2018-11-16 19:29:04.150896"], ["user_id", 2]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:11
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:7
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "highscore" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["highscore", 180], ["updated_at", "2018-11-16 19:29:04.160727"], ["id", 2]]
+  ↳ app/models/user.rb:7
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Game (0.34ms)
+Completed 201 Created in 19ms (Views: 1.1ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:30:36 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.02ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:31:20 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.94ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:31:29 -0500
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"pickleboy", "highscore"=>180, "user"=>{"name"=>"pickleboy", "highscore"=>180}}
+Unpermitted parameter: :user
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:14
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "highscore", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "pickleboy"], ["highscore", 180], ["created_at", "2018-11-16 19:31:29.900644"], ["updated_at", "2018-11-16 19:31:29.900644"]]
+  ↳ app/controllers/api/v1/users_controller.rb:14
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:14
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.27ms)
+Completed 201 Created in 7ms (Views: 1.0ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/v1/games" for 127.0.0.1 at 2018-11-16 14:31:29 -0500
+Processing by Api::V1::GamesController#create as */*
+  Parameters: {"user_id"=>9, "score"=>180, "game"=>{"score"=>180, "user_id"=>9}}
+Unpermitted parameter: :game
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("score", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["score", 180], ["created_at", "2018-11-16 19:31:29.914518"], ["updated_at", "2018-11-16 19:31:29.914518"], ["user_id", 9]]
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/games_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/games_controller.rb:11
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/models/user.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Game (0.36ms)
+Completed 201 Created in 9ms (Views: 0.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:32:11 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.54ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:33:06 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.38ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:33:35 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.43ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:34:15 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.34ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:37:22 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.12ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:37:39 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.87ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:39:35 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.74ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:39:46 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.53ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:42:17 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.97ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:42:29 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.89ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:42:51 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (2.1ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:43:16 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.68ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:43:35 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.99ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-11-16 14:43:44 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6
+No serializer found for resource: #<User id: 4, name: "Duck", highscore: 0, created_at: "2018-11-14 20:23:22", updated_at: "2018-11-14 20:23:22">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (1.81ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.5ms)
+
+
