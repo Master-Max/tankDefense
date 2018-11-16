@@ -183,8 +183,8 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  min-width: 50%;
-  min-height: 50%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 #end-page #win-page .win{
@@ -263,25 +263,33 @@
     transform: translate(-50%, -50%);
 }
 
-/* #end-page #win-page input[type=submit]{
+#end-page #win-page input[type=submit]{
     position: relative;
     top: 30%;
-    left: 50%;
-    text-align: center;
+    left: 0%;
+		display: inline-block;
     z-index: 30;
     font-size: 1vw;
     font-family: 'Press Start 2P', cursive;
     transform: translate(-50%, -50%);
-} */
+ }
 
+#end-page #win-page #dontsave-btn{
+	position: absolute;
+	top: 20%;
+	display: inline-block;
+	z-index: 30;
+	font-size: 1vw;
+	margin-left: 20px;
+	font-family: 'Press Start 2P', cursive;
+	transform: translate(0%, 0%);
+}
 
 #end-page #win-page #end-form #end-form-buttons{
+	display:inline-block;
 	position: absolute;
 	top: 80%;
 	left: 50%;
-	text-align: center;
 	z-index: 30;
-	font-size: 1vw;
-	font-family: 'Press Start 2P', cursive;
 	transform: translate(-50%, -50%);
 }
