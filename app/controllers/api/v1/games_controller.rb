@@ -8,6 +8,7 @@ class Api::V1::GamesController < ApplicationController
 
   def create
     @game = Game.create(game_params)
+    User.find(@game.user_id).set_highscore
     render json: @game, status: :created
   end
 

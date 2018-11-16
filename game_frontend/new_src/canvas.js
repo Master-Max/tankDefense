@@ -122,6 +122,7 @@ function begin(timestamp, delta) {// Currently Empty
         if(currentRound.isLastRound){
           console.log("You Win!!!");
           stop();
+          setTimeout(renderWinPage, 2000);
         }
       }
       if(currentRound.started && !currentRound.finished){// while currentRound still generating creeps
@@ -131,6 +132,7 @@ function begin(timestamp, delta) {// Currently Empty
   } else {
     console.log("You Lose!!!");
     stop();
+    setTimeout(renderLosePage, 2000);
   }
 
 }
@@ -170,6 +172,17 @@ canvas.addEventListener('click', (e) => {
   const x = e.clientX - e.target.offsetLeft;
   const y = e.clientY - e.target.offsetTop;
   console.log(`X: ${e.clientX} | Y: ${e.clientY}`)
+  // console.log(`X: ${e.target.offsetParent.offsetLeft} | Y: ${e.target.offsetParent.offsetTop}`)
   console.log(`X: ${e.target.offsetLeft} | Y: ${e.target.offsetTop}`)
   console.log(`X: ${x} | Y: ${y}`)
 })
+
+// document.addEventListener('click', (e)=> {
+//   console.log("Where Am I Clicking 2?");
+//   const x = e.clientX - e.target.offsetLeft;
+//   const y = e.clientY - e.target.offsetTop;
+//   // const y = e.clientY - e.target.offsetTop + e.target.offsetParent.offsetTop; //can.offsetParent.offSetTop
+//   console.log(`X: ${e.clientX} | Y: ${e.clientY}`)
+//   console.log(`X: ${e.target.offsetLeft} | Y: ${e.target.offsetTop}`)
+//   console.log(`X: ${x} | Y: ${y}`)
+// })

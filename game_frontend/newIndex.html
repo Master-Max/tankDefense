@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Tank Defense</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="start-page" style="display: block;">
+      <h1 class='title'>Tank Defense</h1>
+      <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+      <button id="game-start-btn" type="button" name="game-start">Start Game</button>
+    </div>
+
+    <div id="game-page" style="display: block;">
+      <!-- <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt=""> -->
+      <h1 class='title'>Tank Defense</h1>
+
+      <div class="container">
+        <div class="row">
+          <div class="item"><p>Health: <span id="health">0</span></p></div>
+          <div class="item"><p>Money: <span id="money">0</span></p></div>
+          <div class="item"><p>Kills: <span id="kills">0</span></p></div>
+          <div class="item"><p>Round: <span id="round">0</span></p></div>
+          <div class="item"><p>Remaining: <span id="remaining">0</span></p></div>
+        </div>
+      </div>
+
+      <div id="canvas-div" class="blue-background">
+        <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
+      </div>
+
+      <div class="row">
+        <div id="controls" class="item">
+          <p>Controls</p>
+          <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
+          <button id="next-round-btn" type="button" name="next-round">Next Round</button>
+        </div>
+        <div id="dev-tools" class="item">
+          <p>Dev Tools</p>
+          <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+          <button id="pause-btn" type="button" name="pause">Pause</button>
+          <button id="init-round-btn" type="button" name="init-round">Initialize Round</button>
+          <button id="start-round-btn" type="button" name="start-round">Start Round</button>
+          <button id="start-btn" type="button" name="start">Start Animate</button>
+          <button id="stop-btn" type="button" name="stop">Stop Animate</button>
+        </div>
+        <div id="dev-stats" class="item">
+          <p>Dev Stats</p>
+          <span id="fps-display"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="end-page" style="display: block;">
+      <button id="restart-btn" type="button" name="button">Play Again?</button>
+      <div id="win-page" style="display: block;">
+        <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+        <h1 class='win'>You Win</h1>
+        <h2 class='score'>Score: <span id="final-score">0</span> </h2>
+        <div id="end-form-div">
+          <form id="end-form" class="" action="index.html" method="post">
+            <select id="end-select">
+            </select>
+            <div id="username-input">
+              <span>Username: </span>
+              <input type="text" name="username">
+            </div>
+            <div id="end-highscore">
+              <span>Highscore: <span id="highscore-span">0</span></span>
+            </div>
+            <div id="end-form-buttons" class="row">
+              <input type="submit" value="Save" class="item">
+              <button id="dontsave-btn" class="item" type="button" name="button">Don't Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="lose-page" style="display: block;">
+        <h1 class='lost'>You Lose</h1>
+        <img src="https://media.giphy.com/media/7cTJ3gWVsoC08/giphy.gif" alt="">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="new_src/gobs.js"></script>
+
+  <script type="text/javascript" src='new_src/pages.js'></script>
+
+  <script type="text/javascript" src='src/user.js'></script>
+
+  <script type="text/javascript" src="new_src/models/creep.js"></script>
+  <script type="text/javascript" src="new_src/models/shot.js"></script>
+  <script type="text/javascript" src="new_src/models/turret.js"></script>
+  <script type="text/javascript" src="new_src/models/round.js"></script>
+  <script type="text/javascript" src="new_src/models/player.js"></script>
+  <script type="text/javascript" src="new_src/canvas.js"></script>
+  <script type="text/javascript" src="new_src/nobs.js"></script>
+</html>

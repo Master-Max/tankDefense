@@ -1,7 +1,7 @@
 startButton.addEventListener('click', () => {
   makeTmpPlayer();
   start();
-  console.log("Have I Won: 1");
+  // console.log("Have I Won: 1");
 })
 
 stopButton.addEventListener('click', () => {
