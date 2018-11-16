@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Refactoring The Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="game-page">
+      <h1>Re: Tank Defense</h1>
+      <div class="container">
+        <div class="row">
+          <div class="item"><p>Health: <span id="health">0</span></p></div>
+          <div class="item"><p>Money: <span id="money">0</span></p></div>
+          <div class="item"><p>Kills: <span id="kills">0</span></p></div>
+          <div class="item"><p>Round: <span id="round">0</span></p></div>
+          <div class="item"><p>Remaining: <span id="remaining">0</span></p></div>
+        </div>
+      </div>
+      <div id="canvas-div" class="blue-background">
+        <canvas id="canvas" class="white-background" width="750" height="750"></canvas>
+      </div>
+      <div class="row">
+        <div id="controls" class="item">
+          <p>Controls</p>
+          <button id="add-turret-btn" type="button" name="add-turret">Add Turret</button>
+        </div>
+        <div id="dev-tools" class="item">
+          <p>Dev Tools</p>
+          <button id="add-creep-btn" type="button" name="add-creep">Add Creep</button>
+          <button id="pause-btn" type="button" name="pause">Pause</button>
+          <button id="init-round-btn" type="button" name="init-round">Initialize Round</button>
+          <button id="start-round-btn" type="button" name="start-round">Start Round</button>
+          <button id="start-btn" type="button" name="start">Start Animate</button>
+          <button id="stop-btn" type="button" name="stop">Stop Animate</button>
+        </div>
+        <div id="dev-stats" class="item">
+          <p>Dev Stats</p>
+          <span id="fps-display"></span>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="new_src/gobs.js"></script>
+  <script type="text/javascript" src="new_src/models/creep.js"></script>
+  <script type="text/javascript" src="new_src/models/shot.js"></script>
+  <script type="text/javascript" src="new_src/models/turret.js"></script>
+  <script type="text/javascript" src="new_src/models/round.js"></script>
+  <script type="text/javascript" src="new_src/models/player.js"></script>
+  <script type="text/javascript" src="new_src/canvas.js"></script>
+  <script type="text/javascript" src="new_src/nobs.js"></script>
+</html>
