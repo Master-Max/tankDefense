@@ -15,7 +15,7 @@ const fpsDisplay = document.getElementById('fps-display');
 * Background Setup
 *****************************************/
 let background = new Image();
-const straightMap = 'https://imgur.com/BzYNfOl.png';
+const straightMap = 'https://i.imgur.com/wIefSdJ.png';
 const curvyMap = 'https://i.imgur.com/WRkmpKP.png';
 background.src = straightMap;
 
@@ -59,18 +59,40 @@ function update(delta) {
 
 }
 
+/****************************************
+* Test Stuff
+****************************************/
+// let testCreep = new Creep({x:375,y:375});
+// let testTurret = new Turret({x:100,y:100});
+// let a = new Image(64,64);
+// a.src = bigTankSprite;
+
+/***************************************/
+
 function draw(interp) {
   fpsDisplay.textContent = Math.round(fps) + ' FPS'; // display the FPS
   player.draw();
   ctx.clearRect(0, 0, width, height);
+
+  // console.log(`Test Creep:\nX: ${testCreep.x}\nY: ${testCreep.y}`)
+  // ctx.drawImage(testCreep.sprite, testCreep.x, testCreep.y);
+  // ctx.drawImage(testTurret.sprite, testTurret.x, testTurret.y);
+  // ctx.drawImage(a, 300, 300);
+
   ctx.drawImage(background,0,0)
 
   renderQueue.forEach((obj) => {
-    obj.draw(ctx, interp)
+    if (typeof obj.drawSprite === "function"){
+      obj.drawSprite(ctx, interp); // FIX THIS
+    } else {
+      obj.draw(ctx, interp);
+    }
   })
 
   towerQueue.forEach((obj) => {
-    obj.draw(ctx, interp)
+    // obj.draw(ctx, interp)
+    // obj.drawSprite(ctx, interp)
+    obj.drawRotated(ctx, interp)
   })
 }
 

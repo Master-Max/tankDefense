@@ -7,7 +7,8 @@ class Shot {
 
     // this.creep = data.creep
 
-    this.color = "#ADD8E6";
+    // this.color = "#ADD8E6"; // Light Blue
+    this.color = '#FFA500'; // Orange
     this.timeTillFade = 140;
 
     Shot.all.push(this);
@@ -22,8 +23,8 @@ class Shot {
   }
 
   draw(ctx, interp){ // Not Generalized Yet
-    ctx.fillStyle = "grey";
-    ctx.fillRect(this.x2 - 5, this.y2 - 5, 10, 10)
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.x2 - 10, this.y2 - 5, 20, 10)
     ctx.strokeStyle = this.color;
     ctx.beginPath();
     ctx.moveTo(this.x1,this.y1);

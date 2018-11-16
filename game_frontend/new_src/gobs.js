@@ -20,6 +20,10 @@ const initRoundButton = document.getElementById('init-round-btn');
 const startRoundButton = document.getElementById('start-round-btn');
 
 /****************************************
+* Round Buttons
+*****************************************/
+const nextRoundButton = document.getElementById('next-round-btn');
+/****************************************
 * Turret Placer
 *****************************************/
 const turretButton = document.getElementById('add-turret-btn');

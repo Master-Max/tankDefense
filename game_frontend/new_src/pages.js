@@ -53,6 +53,11 @@ function renderWinPage(){
   winPage.style.display = "block"
   losePage.style.display = "none"
 
+  // Bug Fix, usernameInput wasn't showing right after play again senario.
+  usernameInput.style.display = "";
+  usernameInput.children.username.value = "";
+  // endHighscore.style.display = "";
+
   endForm.style.display = "";
   endHighscore.style.display = "none";
   // I DONT LIKE THERE HERE?
@@ -156,8 +161,8 @@ endSelect.onchange = (event) => {
    } else {
      // console.log("Trying to show stuff")
      // usernameInput.style.visiblity = "visible";
-     endHighscore.style.display = "none";
      usernameInput.style.display = "";
+     endHighscore.style.display = "none";
      newUserGame = true;
    }
  }
